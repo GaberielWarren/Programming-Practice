@@ -1,5 +1,7 @@
 package view;
 
+import java.util.HashMap;
+
 public class QuizProjectView {
     private final QuizProjectUI ui;
     private int questionCount;
@@ -49,5 +51,13 @@ public class QuizProjectView {
 
     public void displayPoints(double points) {
         System.out.printf("You got %.2f percent correct!", points);
+    }
+
+    public void displayHash(String hash) {
+        if (hash.isEmpty()) {
+            return;
+        }
+        System.out.println("You got these questions wrong!:");
+        System.out.println(hash);
     }
 }

@@ -38,6 +38,7 @@ public class QuizProjectController {
             System.exit(0);
         }
         view.displayPoints(dao.getPoints() * 100);
+        view.displayHash(dao.getHash());
     }
 
     public void stateQuestion() {

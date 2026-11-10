@@ -3,11 +3,15 @@ package dao;
 import model.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringJoiner;
 
 public class QuizProjectDao {
     private final ArrayList<Question> quiz;
     private int questionNum;
     private double points;
+    private final Map<Integer, Boolean> questionsStatus = new HashMap<>();
 
     public QuizProjectDao() {
         quiz = new ArrayList<>();
@@ -47,10 +51,26 @@ public class QuizProjectDao {
         if (point) {
             points++;
         }
+        addHash(point);
         return point;
     }
 
     public double getPoints() {
         return (points / quiz.size());
+    }
+
+    private void addHash(boolean hash) {
+        questionsStatus.put(questionNum, hash);
+    }
+
+    public String getHash() {
+        StringJoiner join = new StringJoiner(", ");
+
+        for (Map.Entry<Integer, Boolean> entry : questionsStatus.entrySet()) {
+            if (Boolean.FALSE.equals(entry.getValue())) {
+                join.add("Question " + String.valueOf(entry.getKey()));
+            }
+        }
+        return join.toString();
     }
 }
