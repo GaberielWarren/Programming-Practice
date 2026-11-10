@@ -13,6 +13,10 @@ public class QuizProjectView {
         System.out.println("Welcome to the Java's Quiz!");
         System.out.println("This Quiz will have multiple questions and question types.");
     }
+    public String userOrMaker() {
+        System.out.print("Are you a Quiz taker(1) or a Quiz maker(2)?: ");
+        return ui.getUserInput();
+    }
 
     public String getUserInput() {
        return ui.getUserInput();
@@ -41,5 +45,9 @@ public class QuizProjectView {
         else {
             System.out.println("You got it wrong!");
         }
+    }
+
+    public void displayPoints(double points) {
+        System.out.printf("You got %.2f percent correct!", points);
     }
 }

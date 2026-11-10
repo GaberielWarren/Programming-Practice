@@ -6,11 +6,13 @@ import java.util.ArrayList;
 
 public class QuizProjectDao {
     private final ArrayList<Question> quiz;
-    int questionNum;
+    private int questionNum;
+    private double points;
 
     public QuizProjectDao() {
         quiz = new ArrayList<>();
         questionNum = 0;
+        points = 0;
     }
 
     public int getNumQuestions() {
@@ -38,6 +40,17 @@ public class QuizProjectDao {
     }
 
     public boolean compareAnswer(String userInput) {
-        return userInput.equals(quiz.get(questionNum - 1).getAnswer());
+        return addPoints(userInput.equals(quiz.get(questionNum - 1).getAnswer()));
+    }
+
+    private boolean addPoints(boolean point) {
+        if (point) {
+            points++;
+        }
+        return point;
+    }
+
+    public double getPoints() {
+        return (points / quiz.size());
     }
 }

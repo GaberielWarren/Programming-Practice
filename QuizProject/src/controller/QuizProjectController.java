@@ -8,6 +8,7 @@ public class QuizProjectController {
     private final QuizProjectDao dao;
     int numQuestionsL;
     boolean checkAnswer;
+    String userOrMaker;
 
     public QuizProjectController(QuizProjectView view, QuizProjectDao dao) {
         this.view = view;
@@ -18,13 +19,25 @@ public class QuizProjectController {
 
     public void start() {
         view.startingScreen();
-        while (numQuestionsL > 0) {
-            stateQuestion();
-            stateAnswerText();
-            checkAnswer = dao.compareAnswer(view.stateAnswer());
-            view.checkAnswer(checkAnswer);
-            numQuestionsL--;
+        userOrMaker = view.userOrMaker();
+        if (userOrMaker.equals("1")) {
+            while (numQuestionsL > 0) {
+                stateQuestion();
+                stateAnswerText();
+                checkAnswer = dao.compareAnswer(view.stateAnswer());
+                view.checkAnswer(checkAnswer);
+                numQuestionsL--;
+            }
         }
+        else if (userOrMaker.equals("2")) {
+            System.out.println("Welcome, you can't make any right now it is a WIP, bye!");
+            System.exit(0);
+        }
+        else {
+            System.out.println("That is the wrong input, bye!");
+            System.exit(0);
+        }
+        view.displayPoints(dao.getPoints() * 100);
     }
 
     public void stateQuestion() {
