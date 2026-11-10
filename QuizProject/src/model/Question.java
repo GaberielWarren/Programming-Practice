@@ -1,3 +1,5 @@
+package model;
+
 public class Question {
     private String questionText;
     private String answer;
@@ -19,5 +21,8 @@ public class Question {
     }
     public String getAnswer() {
         return answer;
+    }
+    public void view() {
+        System.out.println("Your answer");
     }
 }
