@@ -1,7 +1,7 @@
 package model;
 
 public class QuestionMultipleChoice extends Question {
-    private String[] choices;
+    private final String[] choices;
     private String answer;
     private char answers;
     private String questionText;
@@ -22,8 +22,8 @@ public class QuestionMultipleChoice extends Question {
     }
     @Override
     public String getAnswerText() {
-        for (int i = 0; i < choices.length; i++) {
-            answerText += answers + ". " + choices[i] + "\t";
+        for (String choice : choices) {
+            answerText += answers + ". " + choice + "\t";
             answers += 1;
         }
         answers = 0;

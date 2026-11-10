@@ -1,7 +1,5 @@
 package view;
 
-import java.util.HashMap;
-
 public class QuizProjectView {
     private final QuizProjectUI ui;
     private int questionCount;
@@ -30,7 +28,7 @@ public class QuizProjectView {
         System.out.println(question);
     }
     public void stateAnswerText (String answer) {
-        if (answer.equals("")) {
+        if (answer.isEmpty()) {
             return;
         }
         System.out.println(answer);
@@ -40,14 +38,6 @@ public class QuizProjectView {
         return getUserInput();
     }
 
-    public void checkAnswer(boolean checkAnswer) {
-        if (checkAnswer) {
-            System.out.println("You got it right!");
-        }
-        else {
-            System.out.println("You got it wrong!");
-        }
-    }
 
     public void displayPoints(double points) {
         System.out.printf("You got %.2f percent correct!", points);
@@ -57,7 +47,7 @@ public class QuizProjectView {
         if (hash.isEmpty()) {
             return;
         }
-        System.out.println("You got these questions wrong!:");
+        System.out.println("You got these question(s) wrong!:");
         System.out.println(hash);
     }
 }
