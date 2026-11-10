@@ -19,10 +19,10 @@ public class Question {
     public String getQuestionText() {
         return questionText;
     }
+    public String getAnswerText() {
+        return "";
+    }
     public String getAnswer() {
         return answer;
-    }
-    public void view() {
-        System.out.println("Your answer");
     }
 }

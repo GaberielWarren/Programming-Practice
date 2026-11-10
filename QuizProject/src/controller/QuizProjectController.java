@@ -20,7 +20,8 @@ public class QuizProjectController {
         view.startingScreen();
         while (numQuestionsL > 0) {
             stateQuestion();
-            checkAnswer = dao.compareAnswer(view.stateAnswer(dao.getAnswer()));
+            stateAnswerText();
+            checkAnswer = dao.compareAnswer(view.stateAnswer());
             view.checkAnswer(checkAnswer);
             numQuestionsL--;
         }
@@ -28,5 +29,9 @@ public class QuizProjectController {
 
     public void stateQuestion() {
         view.stateQuestion(dao.getQuestion());
+    }
+
+    public void stateAnswerText() {
+        view.stateAnswerText(dao.getAnswerText());
     }
 }

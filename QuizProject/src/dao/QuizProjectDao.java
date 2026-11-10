@@ -5,7 +5,7 @@ import model.*;
 import java.util.ArrayList;
 
 public class QuizProjectDao {
-    private ArrayList<Question> quiz;
+    private final ArrayList<Question> quiz;
     int questionNum;
 
     public QuizProjectDao() {
@@ -29,17 +29,15 @@ public class QuizProjectDao {
         questionNum++;
         return quiz.get(questionNum - 1).getQuestionText();
     }
+    public String getAnswerText() {
+        return quiz.get(questionNum - 1).getAnswerText();
+    }
 
     public String getAnswer() {
         return quiz.get(questionNum - 1).getAnswer();
     }
 
     public boolean compareAnswer(String userInput) {
-        if (userInput.equals(quiz.get(questionNum - 1).getAnswer())) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return userInput.equals(quiz.get(questionNum - 1).getAnswer());
     }
 }

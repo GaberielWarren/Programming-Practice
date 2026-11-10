@@ -20,10 +20,16 @@ public class QuizProjectView {
 
     public void stateQuestion(String question) {
         questionCount++;
-        System.out.println("Here is question number " + questionCount + ":");
+        System.out.println("\nHere is question number " + questionCount + ":");
         System.out.println(question);
     }
-    public String stateAnswer(String answer) {
+    public void stateAnswerText (String answer) {
+        if (answer.equals("")) {
+            return;
+        }
+        System.out.println(answer);
+    }
+    public String stateAnswer() {
         System.out.print("Input your answer: ");
         return getUserInput();
     }
