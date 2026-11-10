@@ -67,7 +67,7 @@ public class QuizProjectDao {
         StringJoiner join = new StringJoiner(", ");
 
         for (Map.Entry<Integer, Boolean> entry : questionsStatus.entrySet()) {
-            if (Boolean.FALSE.equals(entry.getValue())) {
+            if (!(entry.getValue())) {
                 join.add("Question " + (entry.getKey()));
             }
         }
