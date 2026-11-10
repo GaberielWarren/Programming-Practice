@@ -7,14 +7,12 @@ public class QuizProjectController {
     private final QuizProjectView view;
     private final QuizProjectDao dao;
     int numQuestionsL;
-    boolean checkAnswer;
     String userOrMaker;
 
     public QuizProjectController(QuizProjectView view, QuizProjectDao dao) {
         this.view = view;
         this.dao = dao;
         numQuestionsL = dao.getNumQuestions();
-        checkAnswer = false;
     }
 
     public void start() {
@@ -24,8 +22,7 @@ public class QuizProjectController {
             while (numQuestionsL > 0) {
                 stateQuestion();
                 stateAnswerText();
-                checkAnswer = dao.compareAnswer(view.stateAnswer());
-                view.checkAnswer(checkAnswer);
+                dao.compareAnswer(view.stateAnswer());
                 numQuestionsL--;
             }
         }
