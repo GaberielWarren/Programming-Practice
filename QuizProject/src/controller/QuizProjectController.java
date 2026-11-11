@@ -22,7 +22,6 @@ public class QuizProjectController {
             while (numQuestionsL > 0) {
                 stateQuestion();
                 stateAnswerText();
-                dao.compareAnswer(view.stateAnswer());
                 numQuestionsL--;
             }
         }
@@ -44,5 +43,7 @@ public class QuizProjectController {
 
     public void stateAnswerText() {
         view.stateAnswerText(dao.getAnswerText());
+        dao.compareAnswer(view.stateAnswer());
     }
 }
+
